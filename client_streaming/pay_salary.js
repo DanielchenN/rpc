@@ -1,11 +1,10 @@
 let { employees } = require('./data.js');
-const _ = require('lodash');
 
 function paySalary(call) {
     let employeeIdList = call.request.employeeIdList;
   
-    _.each(employeeIdList, function (employeeId) {
-      let employee = _.find(employees, { id: employeeId });
+    employeeIdList.forEach(employeeId => {
+      let employee =employees.find(r => r.id === employeeId) 
       if (employee != null) {
         let responseMessage = "Salary paid for ".concat(
           employee.firstName,
